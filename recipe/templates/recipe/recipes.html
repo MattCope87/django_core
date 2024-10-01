@@ -1,0 +1,76 @@
+{% extends "recipe/base.html" %}
+{% block content %}
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+<div class="container mt-5">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+
+    
+    <!-- Search Form -->
+<form method="get" action="" class="mb-4">
+<div class="input-group col-6 mx-auto">
+<input type="text" name="search" class="form-control" placeholder="Search for recipes..." value="{{ request.GET.search }}">
+<div class="input-group-append">
+<button class="btn btn-primary" type="submit">Search</button>
+</div>
+</div>
+</form>
+<!-- Add Recipe Form -->
+<form class="col-6 mx-auto card p-3 shadow-lg" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <h2 class="text text-center"> My Recipes </h2>
+    <br>
+    <h3>Add Recipe</h3>
+    <hr>
+    <div class="form-group">
+    <label>Recipe name</label>
+    <input name="recipe_name" type="text" class="form-control" required>
+    </div>
+    <div class="form-group">
+    <label>Recipe description</label>
+    <textarea name="recipe_description" class="form-control" required></textarea>
+    </div>
+    <div class="form-group">
+    <label>Recipe Image</label>
+    <input name="recipe_image" type="file" class="form-control">
+    </div>
+    <button type="submit" class="btn btn-success">Add Recipe</button>
+    </form>
+<!-- Display Recipes -->
+<div class="mt-5">
+    <h3>Recipes</h3>
+    <hr>
+    {% if recipes %}
+    <div class="row">
+    {% for recipe in recipes %}
+    <div class="col-md-4">
+    <div class="card mb-4 shadow-sm">
+        {% if recipe.recipe_image %}
+    <img src="{{ recipe.recipe_image.url }}" class="card-img-top" alt="{{ recipe.recipe_name }}">
+    {% else %}
+    <p>
+    <p><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-images" viewBox="0 0 16 16">
+        <path d="M4.502 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3"/>
+        <path d="M14.002 13a2 2 0 0 1-2 2h-10a2 2 0 0 1-2-2V5A2 2 0 0 1 2 3a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v8a2 2 0 0 1-1.998 2M14 2H4a1 1 0 0 0-1 1h9.002a2 2 0 0 1 2 2v7A1 1 0 0 0 15 11V3a1 1 0 0 0-1-1M2.002 4a1 1 0 0 0-1 1v8l2.646-2.354a.5.5 0 0 1 .63-.062l2.66 1.773 3.71-3.71a.5.5 0 0 1 .577-.094l1.777 1.947V5a1 1 0 0 0-1-1z"/>
+      </svg>  No image available</p></p>
+{% endif %}
+    <div class="card-body">
+    <h5 class="card-title">{{ recipe.recipe_name }}</h5>
+    <p class="card-text">{{ recipe.recipe_description }}</p>
+    <a href="{% url 'update_recipe' recipe.id %}" class="btn btn-sm btn warning">
+        <i class="bi bi-pen"> </i> edit
+    </a>
+    <a href="{% url 'delete_recipe' recipe.id %}" class="btn btn-sm btn warning">
+        <i class="bi bi-trash"> </i> delete
+    </a>
+
+    </div>
+    </div>
+    </div>
+    {% endfor %}
+    </div>
+    {% else %}
+    <p>No recipes found.</p>
+    {% endif %}
+    </div>
+    </div>
+    {% endblock %}
