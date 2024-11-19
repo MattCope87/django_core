@@ -1,0 +1,66 @@
+{% extends 'event/index.html' %}
+
+{% block title %}Register{% endblock %}
+
+{% block content %}
+<html>
+    <head>
+    <style>
+           
+        body {
+            font-family: Arial;
+
+            background-colour: #f0f0f0;
+            
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; 
+            margin: 0;
+        }
+        .login-box {
+            backgroun-color: white;
+            padding: 20px;
+            border-radius; 5px
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            width: 300px
+
+        }
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #007BFF;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+
+        }
+        button: hover {
+            background-color: #0056b3; /* Darker blue on hover */
+        }
+        h1 {
+            text-align: center;
+        }
+    </style>
+    </head>
+    <body>
+        <h1>Register now!</h1>
+        <form method="POST" autocomplete="off">
+        {% csrf_token %}
+        {{registerform.as_p}}
+    
+        <input type="Submit" value="Register"/>
+        </form>
+        <p>Already have an account? <a href="{% url 'login_view' %}">Login here</a></p> <!-- Link to login page -->
+    </body>
+    </html>
+{% endblock %}
