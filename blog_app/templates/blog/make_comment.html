@@ -1,0 +1,24 @@
+{% extends "blog/base.html" %}
+{% block content %}
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+<div class="container mt-5">
+    <form class="col-6 mx-auto card p-3 shadow-lg" method="post" action="{% url 'add_blog' %}" enctype="multipart/form-data">
+    {% csrf_token %}
+    <h2 class="text text-center"> Blog Manager </h2>
+        <h3>make a comment</h3>
+            <hr>
+            <div class="form-group">
+                <label>comment title: </label>
+                <input name="blog_title" value="{{blog.blog_title}}" type="text" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label>comment: </label>
+                <textarea name="blog_entry" class="form-control" required>{{blog.blog_entry}}</textarea>
+            </div>
+            
+        <button type="submit" class="btn btn-success">Add comment</button>
+    </form>
+</div>
+
+{% endblock %}

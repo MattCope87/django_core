@@ -9,9 +9,6 @@ urlpatterns = [
     
     path('login/', views.login_view, name='login_view'),
     
-    # have to figure wif event_view is nec here
-    #path('events/', views.event_view, name='event_view'),
-
     path('events/add_event/', views.add_event, name='add_event'),
     
     path('events/<int:id>/detail_view/', views.detail_view, name='detail_view'),
