@@ -39,8 +39,6 @@ def delete_comment(request, id, comment_id):
         comment.delete()
     return redirect('detail_view', id=blog.id)
 
-
-
 def register_view(request):   
     form = CreateUserForm()
     if request.method == "POST":
@@ -124,24 +122,6 @@ def update_blog(request, id):
     context = {'blog': queryset}
     return render(request, 'blog/update_blog.html', context)
 
-""" def make_comment(request, id):
-    print(request.method)
-    queryset = Create_Blog.objects.get(id=id)
-    if request.method == 'GET':
-        if request.user not in queryset.users.all():
-            queryset.bloggers.add(request.user)
-            print("attendance confirmed")
-        else:
-            print("already signed up")
-    return redirect('detail_view', id=id)
-    
-def comment_list(request):
-    queryset = Create_Blog.blog.user.all()
-    context = {'blogs': queryset}
-    
-    return render(request, 'blog/detail_view.html', context) """
-    
-""" def api_event(request):
-    events = Create_Blog.objects.all()
-    events_data = list(blog.values())
-    return JsonResponse({'blog': blog_data}, safe=False)  """
+
+
+
