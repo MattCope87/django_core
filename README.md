@@ -59,11 +59,12 @@ Using a Windows operating system and appropriate IDE with python
 
 ### Dependencies
 
-Ensure Django is installed: 
+```Ensure Django is installed: 
 * pip install Django
 
 Install Pillow for image processing
 * pip install Pillow
+```
 
 ### Working directory
 
