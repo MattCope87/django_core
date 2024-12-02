@@ -70,10 +70,10 @@ Install Pillow for image processing
 ### Working directory
 ```
 Open the folder 'Event Blog Manager MC' in VS Code and ensure 'django_tutorial' is the working directory via terminal:
-* C:\...Event Blog Manager MC\django_tutorial>
+* C:\...Blog Manager MC\django_tutorial>
 
 You should be ready to run the application successfully:
-* C:\...Event Blog Manager MC\django_tutorial> python manage.py runserver
+* C:\...Blog Manager MC\django_tutorial> python manage.py runserver
 ```
 You are ready to register and log in to start using the application
 
