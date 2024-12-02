@@ -1,6 +1,6 @@
 <div style="background-color: white; color: black; font-family: Arial, sans-serif; padding: 10px;">
 
-# Event Blog - about
+# blog_app - about
 
 Event blog allows users to register and log in to a shared blogging space. Users can perform basic functions such as post, edit, delete, and comment.
 
@@ -168,3 +168,32 @@ bootstrap links are inserted at the top of html templates adding styling
 
 ### username and timestamp record
 ![alt text](<media/test_img/Screenshot 2024-12-02 202458.png>)
+
+
+## Unit and integration testing within blog_app
+
+```
+from django.test import TestCase
+from django.test import Client
+from django.contrib.auth import get_user_model
+from .models import Create_Blog
+
+# Create your tests here.
+
+class BlogViewTest(TestCase):
+    def setUp(self):
+        # Create a user and a blog post for the tests
+        self.user = get_user_model().objects.create_user(username='testuser', password='password123')
+        self.blog = Create_Blog.objects.create(
+            user=self.user,
+            blog_title="Test Test",
+            blog_entry="This is a test blog post"
+        )
+        self.client = Client()
+
+class UserViewsTest(TestCase):
+    def setUp(self):
+        # Create a user for the tests
+        self.user = get_user_model().objects.create_user(username='testuser', password='password123')
+
+```
