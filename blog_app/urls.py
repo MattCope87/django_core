@@ -13,7 +13,7 @@ urlpatterns = [
     path('blogs/<int:id>/detail_view/', views.detail_view, name='detail_view'),
     path('blogs/<int:id>/delete', views.delete_blog, name='delete_blog'),
     path('blogs/<int:id>/update_blog/', views.update_blog, name="update_blog"),
-
+    path('blogs/blog_data/', views.blog_api, name="blog_data"),
     path('blogs/<int:id>/delete_comment/<int:comment_id>/', views.delete_comment, name='delete_comment'),
         
     

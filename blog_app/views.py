@@ -124,7 +124,7 @@ def update_blog(request, id):
     context = {'blog': queryset}
     return render(request, 'blog/update_blog.html', context)
 
-""" def make_comment(request, id):
+def make_comment(request, id):
     print(request.method)
     queryset = Create_Blog.objects.get(id=id)
     if request.method == 'GET':
@@ -139,9 +139,9 @@ def comment_list(request):
     queryset = Create_Blog.blog.user.all()
     context = {'blogs': queryset}
     
-    return render(request, 'blog/detail_view.html', context) """
+    return render(request, 'blog/detail_view.html', context)
     
-""" def api_event(request):
-    events = Create_Blog.objects.all()
-    events_data = list(blog.values())
-    return JsonResponse({'blog': blog_data}, safe=False)  """
+def blog_api(request):
+    blog = Create_Blog.objects.all()
+    blog_data = list(blog.values())
+    return JsonResponse({'blog': blog_data}, safe=False)
