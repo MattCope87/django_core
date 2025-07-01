@@ -23,8 +23,6 @@ class LoginForm(AuthenticationForm):
 class DateTimeInput(forms.DateTimeInput):
     input_type = 'datetime-local'
 
-class ExampleForm(forms.Form):
-    event = forms.DateTimeField(widget=DateTimeInput())
                   
 class ExampleModelForm(forms.Form):
     class Meta:

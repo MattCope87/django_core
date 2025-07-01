@@ -39,8 +39,6 @@ def delete_comment(request, id, comment_id):
         comment.delete()
     return redirect('detail_view', id=blog.id)
 
-
-
 def register_view(request):   
     form = CreateUserForm()
     if request.method == "POST":
@@ -124,6 +122,7 @@ def update_blog(request, id):
     context = {'blog': queryset}
     return render(request, 'blog/update_blog.html', context)
 
+<<<<<<< HEAD
 def make_comment(request, id):
     print(request.method)
     queryset = Create_Blog.objects.get(id=id)
@@ -145,3 +144,8 @@ def blog_api(request):
     blog = Create_Blog.objects.all()
     blog_data = list(blog.values())
     return JsonResponse({'blog': blog_data}, safe=False)
+=======
+
+
+
+>>>>>>> ce1974e3619c3c589ecee2e551378dbca30b5f0a
